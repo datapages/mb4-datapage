@@ -1,5 +1,5 @@
 project:
-  title: "Palmer Penguins"
+  title: "ManyBabies 4"
   type: datapage
 
 website:
@@ -17,6 +17,6 @@ execute:
   error: false
 
 redivis:
-  user: datapages
-  dataset: palmerpenguins
-  table: penguins
+  user: mikabr
+  dataset: many_babies_4:20k3
+  table: clean_data:0kdg
