@@ -1,0 +1,21 @@
+numerical_vars:
+  - age_days
+  - total_looking
+  - up_looking
+  - down_looking
+  - z_age_days
+
+categorical_vars:
+  - condition
+  - method
+  - exclude_session
+  - participant_gender
+  - infant_handedness
+  - character_choice
+  - helper_hinderer_choice
+  - left_right_choice
+
+defaults:
+  x: age_days
+  y: total_looking
+  color: condition

@@ -17,6 +17,8 @@ execute:
   error: false
 
 redivis:
-  user: mikabr
-  dataset: many_babies_4:20k3
-  table: clean_data:0kdg
+  user: datapages
+  dataset: many_babies_4
+  table: clean_data
+  # workflow: many_babies_4_analysis
+  # table: primary_data
