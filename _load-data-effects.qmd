@@ -1,0 +1,7 @@
+```{r}
+library(redivis)
+dataset <- redivis$user(quarto$redivis$user)$workflow(quarto$redivis$workflow)
+table <- dataset$table("lab_summary")
+data <- table$to_tibble()
+ojs_define(effects_data = data)
+```

@@ -1,8 +1,10 @@
 ---
-title: "Palmer Penguins"
-subtitle: "A great dataset for data exploration & visualization"
+title: "ManyBabies 4"
+subtitle: "Social Evaluation"
 description: |
-  Data were collected and made available by [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) and the [Palmer Station, Antarctica LTER](https://pallter.marine.rutgers.edu/), a member of the [Long Term Ecological Research Network](https://lternet.edu/).
+  Evaluating others’ actions as praiseworthy or blameworthy is a fundamental aspect of human nature. _Where does this sense of right and wrong come from?_
+
+  A seminal study published by Hamlin, Wynn, & Bloom, 2007 suggested that the ability to form social evaluations based on third-party interactions may emerges within the first year of life, considerably earlier than previously thought. ManyBabies4 aims to replicate the original Hamlin et al., 2007 findings and identify moderators of the effect. 
 ---
 
 {{< include _load-data.qmd >}}
@@ -11,6 +13,9 @@ description: |
 
 {{< include _scatter_hist.qmd >}}
 
+{{< include _load-data-effects.qmd >}}
+
+{{< include _effects.qmd >}}
 
 <!-- {{< include _scatter.qmd >}} -->
 

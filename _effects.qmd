@@ -1,0 +1,104 @@
+```{ojs}
+//| output: false
+
+e = transpose(effects_data)
+
+_vars = ({
+               lab_id: { label: "Lab"                        },
+            condition: { label: "Condition"                  },
+               tested: { label: "N tested"                   },
+    chose_helper_mean: { label: "Proportion choosing helper" },
+         chose_helper: { label: "N choosing helper"          },
+             ci_lower: { label: "CI lower"                   },
+             ci_upper: { label: "CI upper"                   },
+               method: { label: "Method"                     },
+   exclusion_eligible: { label: "Exclusion rate"             },
+choice_exclusion_rate: { label: "Non-choice rate"            },
+         visual_angle: { label: "Visual angle"               },
+               //region: { label: "Region"                     },
+})
+
+effects_vars = ({
+    y: "lab_id",
+    x: "chose_helper_mean",
+   x1: "ci_lower",
+   x2: "ci_upper",
+    r: "tested",
+   fx: "condition",
+  col: effects_color_var,
+})
+
+
+fx_ref = "social"
+
+color_opts = ([
+  "condition",
+  "method",
+  "region",
+  "visual_angle",
+  "exclusion_eligible",
+  "choice_exclusion_rate"
+])
+```
+
+```{ojs}
+effects_channels = Object.fromEntries(Object.entries(effects_vars).map(([k, v]) => [_vars[v].label, v]))
+fx_vals = [...new Set(e.map(x => x[effects_vars.fx]))].map(x => ({v: x, ref: x === fx_ref}))
+fx_vals_sorted = ([...fx_vals.filter(({ref}) => ref), ...fx_vals.filter(({ref}) => !ref)]).map(x => x.v)
+```
+
+```{ojs}
+//| panel: input
+
+viewof effects_color_var = Inputs.select(color_opts, {label: "Color"})
+```
+
+```{ojs}
+color_type = vars.filter(v => v.name === effects_color_var)[0].type
+color_scheme = disc_types.includes(color_type) ? "observable10" : "viridis"
+
+Plot.plot({
+  style: { fontFamily: "var(--sans-serif)" },
+  marginLeft: 150,
+  width: 1000,
+  x: { label: _vars[effects_vars.x].label, line: true },
+  y: { label: _vars[effects_vars.y].label },
+  fx: { label: _vars[effects_vars.fx].label, domain: fx_vals_sorted },
+  color: {
+    label: _vars[effects_vars.col].label,
+    legend: effects_vars.col !== effects_vars.fx,
+    scheme: color_scheme
+  },
+  marks: [
+    Plot.ruleX([0.5], { stroke: "lightgrey", strokeDasharray: [3, 3] }),
+    Plot.ruleY(e, { y: effects_vars.y, stroke: "lightgrey" }),
+    Plot.link(e, {
+      fx: effects_vars.fx,
+      y: effects_vars.y,
+      x1: effects_vars.x1,
+      x2: effects_vars.x2
+    }),
+    Plot.dot(e, {
+      fx: effects_vars.fx,
+      x: effects_vars.x,
+      y: effects_vars.y,
+      stroke: effects_vars.col,
+      fill: effects_vars.col,
+      r: effects_vars.r,
+      // sort descending by x value within reference level of fx
+      sort: {
+          y: "data",
+          reduce: (dy) => dy.find(v => v[effects_vars.fx] === fx_ref)?.[effects_vars.x],
+          order: "descending"
+      }
+    }),
+    Plot.tip(e, Plot.pointerY({
+      fx: effects_vars.fx,
+      x: effects_vars.x,
+      y: effects_vars.y,
+      stroke: effects_vars.col,
+      channels: effects_channels
+    })),
+  ]
+})
+```

@@ -18,7 +18,8 @@ execute:
 
 redivis:
   user: datapages
-  dataset: many_babies_4
-  table: clean_data
-  # workflow: many_babies_4_analysis
-  # table: primary_data
+  # dataset: many_babies_4
+  # table: clean_data
+  workflow: many_babies_4_analysis
+  table: primary_data
+  # table: lab_summary
