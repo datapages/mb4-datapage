@@ -2,7 +2,7 @@
 title: "ManyBabies 4"
 subtitle: "Social Evaluation"
 description: |
-  Evaluating others’ actions as praiseworthy or blameworthy is a fundamental aspect of human nature. _Where does this sense of right and wrong come from?_
+  Evaluating others' actions as praiseworthy or blameworthy is a fundamental aspect of human nature. _Where does this sense of right and wrong come from?_
 
   A seminal study published by Hamlin, Wynn, & Bloom, 2007 suggested that the ability to form social evaluations based on third-party interactions may emerges within the first year of life, considerably earlier than previously thought. ManyBabies4 aims to replicate the original Hamlin et al., 2007 findings and identify moderators of the effect. 
 ---
@@ -16,8 +16,3 @@ description: |
 {{< include _load-data-effects.qmd >}}
 
 {{< include _effects.qmd >}}
-
-<!-- {{< include _scatter.qmd >}} -->
-
-<!-- {{< include _hist.qmd >}} -->
-

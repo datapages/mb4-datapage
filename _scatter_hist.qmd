@@ -1,4 +1,4 @@
-```{ojs}
+```{ojs scatterhist-inputs}
 //| panel: input
 
 viewof x_var = Inputs.select(cont_opts, {value: x_val, label: "X axis"})
@@ -6,7 +6,7 @@ viewof y_var = Inputs.select(cont_opts, {value: y_val, label: "Y axis"})
 viewof color_var = Inputs.select(disc_opts, {value: color_val, label: "Color"})
 ```
 
-```{ojs}
+```{ojs scatterhist-plot}
 default_color = d3.schemeCategory10[0]
 plt_color = color_var || default_color
 

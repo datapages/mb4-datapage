@@ -1,4 +1,4 @@
-```{r}
+```{r load-data-effects}
 library(redivis)
 dataset <- redivis$user(quarto$redivis$user)$workflow(quarto$redivis$workflow)
 table <- dataset$table("lab_summary")

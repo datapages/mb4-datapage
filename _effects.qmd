@@ -1,4 +1,4 @@
-```{ojs}
+```{ojs effects-data}
 //| output: false
 
 e = transpose(effects_data)
@@ -41,19 +41,19 @@ color_opts = ([
 ])
 ```
 
-```{ojs}
+```{ojs effects-setup}
 effects_channels = Object.fromEntries(Object.entries(effects_vars).map(([k, v]) => [_vars[v].label, v]))
 fx_vals = [...new Set(e.map(x => x[effects_vars.fx]))].map(x => ({v: x, ref: x === fx_ref}))
 fx_vals_sorted = ([...fx_vals.filter(({ref}) => ref), ...fx_vals.filter(({ref}) => !ref)]).map(x => x.v)
 ```
 
-```{ojs}
+```{ojs effects-input}
 //| panel: input
 
 viewof effects_color_var = Inputs.select(color_opts, {label: "Color"})
 ```
 
-```{ojs}
+```{ojs effects-plot}
 color_type = vars.filter(v => v.name === effects_color_var)[0].type
 color_scheme = disc_types.includes(color_type) ? "observable10" : "viridis"
 
